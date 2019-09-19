@@ -1,17 +1,18 @@
 # ADGroupManager
-command line management of groups using python. list,add,remove users from AD groups
+command line management of AD groups using python. Supports list,add,remove users. 
 
 
 Usage:
 
 ## add a user to a group
-  
-* ADGroupManager add john.smith employees
-
+```
+ADGroupManager.py add john.smith employees
+```
 ## remove a user from a group
-  
-* ADGroupManager remove john.smith employees
-
-## list the members of a group
-  
-* ADGroupManager list employees
+```  
+ADGroupManager.py remove john.smith employees
+```
+## list all members of a group
+```  
+ADGroupManager.py list employees
+```
