@@ -51,10 +51,14 @@ if __name__ == '__main__':
         groupdn = myLdap.searchGroup(args.group)
         userdn = myLdap.searchUsername(args.user)
         myLdap.addUserToGroup(userdn,groupdn)
+        if not myLdap.verifyUserInGroup(userdn, groupdn):
+            sys.stderr.write("ERROR: " + userdn + " is not in " + groupdn + "\nExiting\n")
    
     if args.command == 'remove':
         print ("removing " + args.user + " from " + args.group)
         groupdn = myLdap.searchGroup(args.group)
         userdn = myLdap.searchUsername(args.user)
         myLdap.removeUsersInGroups(userdn,groupdn)
+        if myLdap.verifyUserInGroup(userdn, groupdn):
+            sys.stderr.write("ERROR: " + userdn + " is still in " + groupdn + "\nExiting\n")
    

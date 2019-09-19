@@ -49,7 +49,7 @@ class Ldap(object):
             sys.exit()
             
     def getMembers(self,groupdn):
-        self.printDebug(groupdn)
+        #self.printDebug(groupdn)
         self.conn.search(groupdn,'(objectclass=group)',attributes=['member'] )
         #for m in  self.conn.response[0]['attributes']['member']:
             #self.printDebug("\t" + m)
@@ -63,7 +63,12 @@ class Ldap(object):
         self.printDebug("removing " + userdn + " from " + groupdn)
         removeUsersInGroups(self.conn,[userdn,],[groupdn,], fix=True, raise_error=True)    
     
+    def verifyUserInGroup(self,userdn,groupdn):
+        members = self.getMembers(groupdn)
+        return userdn in members
+    
     
     def printDebug(self,string):
         if(self.debug):
             sys.stderr.write(string + "\n")
+            
