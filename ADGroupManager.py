@@ -32,6 +32,7 @@ if __name__ == '__main__':
         parser.print_help()
         sys.exit() 
     
+    print ("Please authenticate with your admin credentials to perform this AD operation...")
     binddn = input("username: ")
     if "@vai.org" not in binddn.lower():
         binddn += "@vai.org" 
