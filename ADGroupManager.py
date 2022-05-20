@@ -37,7 +37,7 @@ if __name__ == '__main__':
     if "@vai.org" not in binddn.lower():
         binddn += "@vai.org" 
     bindpw=getpass.getpass(prompt='Password: ', stream=None) 
-    server='vai.org'
+    server='ldaps://vai.org'
     base='dc=vai,dc=org'
     myLdap = Ldap.Ldap( binddn,bindpw,server,base,debug=True)
     
